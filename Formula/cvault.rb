@@ -27,17 +27,19 @@ class Cvault < Formula
   # `url` at parse time. Declaring `url` first makes `#{version}` resolve to
   # nil, which produces a 404 download URL (`.../cli-v/cvault.bundle.js.tar.gz`).
   # Bumped automatically by .github/workflows/release-cli.yml.
-  version "0.1.5"
+  version "0.1.6"
   url "https://github.com/flatoutsolutions/cvault/releases/download/cli-v#{version}/cvault.bundle.js.tar.gz"
   # CI substitutes the marker on each release. DO NOT hand-edit.
-  sha256 "6b8333b29c84936ccdc234e905c55714aad2567cfdeb9ddd3641e0a23e51f69f"
+  sha256 "c3cecec561ea896756787f0149d43873f89cd6996058eab640fdc9bc8036e2e8"
   license "MIT"
 
   # The bundle is plain JavaScript — Bun is the only runtime dependency.
-  # Homebrew already has a maintained `bun` formula on both macOS and
-  # Linuxbrew, so leaning on it instead of vendoring a copy keeps cvault
-  # tiny and lets users pick up Bun upgrades automatically.
-  depends_on "bun"
+  # Bun is NOT in homebrew-core; it ships exclusively through the official
+  # `oven-sh/bun` tap (https://github.com/oven-sh/homebrew-bun). Declaring
+  # the dep with its fully-qualified name lets `brew install cvault`
+  # auto-tap `oven-sh/bun` for users who don't already have it, instead
+  # of failing with "No available formula with the name 'bun'".
+  depends_on "oven-sh/bun/bun"
 
   def install
     # The release tarball contains a single file: cvault.bundle.js. Drop
