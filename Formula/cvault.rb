@@ -27,10 +27,10 @@ class Cvault < Formula
   # `url` at parse time. Declaring `url` first makes `#{version}` resolve to
   # nil, which produces a 404 download URL (`.../cli-v/cvault.bundle.js.tar.gz`).
   # Bumped automatically by .github/workflows/release-cli.yml.
-  version "0.1.15"
+  version "0.1.16"
   url "https://github.com/flatoutsolutions/cvault/releases/download/cli-v#{version}/cvault.bundle.js.tar.gz"
   # CI substitutes the marker on each release. DO NOT hand-edit.
-  sha256 "7295888a732fd47c97fe9c5f80c2d9adbc7235578e3d551120de810e423b1d75"
+  sha256 "d049cbb3b8d4f3ac67d5d7ce04e455a3589da83278d59950e0bc0d0d74898fe8"
   license "MIT"
 
   # The bundle is plain JavaScript — Bun is the only runtime dependency.
